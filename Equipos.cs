@@ -1,6 +1,6 @@
 //Nombre: Cesar Alexis Peñuelas Cardenas
 //NumControl: 22210335
-//Examen Unidad 2 - Patrones de Diseño - Object Pool y Singletonusing System;
+//Examen Unidad 2 - Patrones de Diseño - Object Pool y Singletonusing System
 using System.Collections.Generic;
 
 namespace EquiposObjectPool
@@ -34,3 +34,4 @@ namespace EquiposObjectPool
         }
     }
 }
+

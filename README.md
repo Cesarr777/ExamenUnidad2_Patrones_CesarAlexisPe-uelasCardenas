@@ -11,6 +11,12 @@ Proyecto: **Reserva y Gestión de Equipos de Laboratorio**
 Este proyecto aplica los patrones de diseño **Object Pool** y **Singleton** en un entorno de laboratorio donde se administran equipos de cómputo.  
 El objetivo es demostrar el uso eficiente de recursos y el control centralizado de las instancias dentro de una aplicación.
 
+
+## COMO EJECUTARLO
+- ABRA UNA TERMINAL
+- VAYA A LA CARPETA DONDE GUARDO EL PROGRAMA
+- CORRA EL COMANDO DOTNET RUN
+- LA TERMINAL LE INDICAFRA LAS INSTRUCCIONES 
 ---
 
 ## ⚙️ Descripción del funcionamiento

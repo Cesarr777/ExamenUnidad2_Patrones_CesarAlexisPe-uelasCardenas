@@ -16,7 +16,7 @@ El objetivo es demostrar el uso eficiente de recursos y el control centralizado 
 - ABRA UNA TERMINAL
 - VAYA A LA CARPETA DONDE GUARDO EL PROGRAMA
 - CORRA EL COMANDO DOTNET RUN
-- LA TERMINAL LE INDICAFRA LAS INSTRUCCIONES 
+- LA TERMINAL LE INDICARA LAS INSTRUCCIONES 
 ---
 
 ## ⚙️ Descripción del funcionamiento

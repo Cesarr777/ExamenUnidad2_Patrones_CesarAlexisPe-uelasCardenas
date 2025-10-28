@@ -1,0 +1,18 @@
+//peñuelas cardenas cesar alexis 
+//22210335
+//proyecto decorador
+namespace EbayShopConsole
+{
+    /// <summary>
+    /// Clase base para los decoradores de producto (descuento, envío, etc.)
+    /// </summary>
+    public abstract class ProductoDecorator : ProductoBase
+    {
+        protected ProductoBase _producto;
+
+        protected ProductoDecorator(ProductoBase producto)
+        {
+            _producto = producto;
+        }
+    }
+}

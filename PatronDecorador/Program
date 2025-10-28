@@ -1,0 +1,156 @@
+//peñuelas cardenas cesar alexis 
+//22210335
+//proyecto decorador
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using EbayShopConsole;
+
+namespace MercadoLibreConsole
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<ProductoBase> carrito = new List<ProductoBase>();
+            bool continuar = true;
+
+            while (continuar)
+            {
+                Console.Clear();
+                Console.WriteLine("==============================================");
+                Console.WriteLine("Bienvenido a Ebay");
+                Console.WriteLine("==============================================\n");
+                Console.WriteLine("Categorías disponibles:");
+                Console.WriteLine("1) Videojuegos");
+                Console.WriteLine("2) Electronicos");
+                Console.WriteLine("3) Material de Limpieza");
+                Console.WriteLine("4) Hogar");
+                Console.WriteLine("5) Salir");
+                Console.Write("\nSelecciona una categoría: ");
+                string opcion = Console.ReadLine() ?? string.Empty;
+
+                ProductoBase? producto = opcion switch
+                {
+                    "1" => SeleccionarProductoVideoJuegos(),
+                    "2" => SeleccionarProductoElectronicos(),
+                    "3" => SeleccionarProductoMaterialDeLimpieza(),
+                    "4" => SeleccionarProductoHogar(),
+                    "5" => SeleccionarSalir(),
+                    _ => null
+                };
+
+                if (opcion == "5")
+                {
+                    continuar = false;
+                    break;
+                }
+
+                if (producto != null)
+                {
+                    carrito.Add(producto);
+                    Console.WriteLine($"\n '{producto.Nombre}' agregado al carrito.");
+                }
+
+                Console.WriteLine("\n¿Deseas agregar otro producto? (s/n): ");
+                if (Console.ReadLine()?.ToLower() != "s") continuar = false;
+            }
+
+            Console.Clear();
+            if (carrito.Count == 0)
+            {
+                Console.WriteLine(" No agregaste productos al carrito.");
+                return;
+            }
+
+            // Aplicar descuento aleatorio a un producto
+            Random rnd = new Random();
+            int index = rnd.Next(carrito.Count);
+            carrito[index] = new DescuentoDecorator(carrito[index]);
+
+            // Calcular total
+            double total = carrito.Sum(p => p.Precio);
+            double costoEnvio = 59.99;
+
+            // Envío gratis si supera $149
+            if (total > 149)
+            {
+                costoEnvio = 0;
+                Console.WriteLine("Envío GRATIS por compra mayor a $149.\n");
+            }
+
+            // Mostrar resumen
+            Console.WriteLine("==============================================");
+            Console.WriteLine("RESUMEN DE TU COMPRA - Ebay");
+            Console.WriteLine("==============================================\n");
+
+            foreach (var p in carrito)
+            {
+                Console.WriteLine($"    {p.Nombre}");
+                Console.WriteLine($"   {p.Descripcion}");
+                Console.WriteLine($"    Precio: ${p.Precio:F2}\n");
+            }
+
+            Console.WriteLine("----------------------------------------------");
+            Console.WriteLine($"Subtotal: ${total:F2}");
+            Console.WriteLine($"Costo de envío: ${costoEnvio:F2}");
+            Console.WriteLine($"TOTAL: ${(total + costoEnvio):F2}");
+            Console.WriteLine("----------------------------------------------\n");
+            Console.WriteLine("¡Gracias por comprar en Ebay!");
+            Console.ReadKey();
+        }
+
+        private static ProductoBase SeleccionarSalir()
+        {
+            throw new NotImplementedException();
+        }
+
+        static ProductoBase SeleccionarProductoVideoJuegos()
+        {
+            Console.Clear();
+            Console.WriteLine("VideoJuegos\n");
+            Console.WriteLine("1) The Last of Us Part II - $899.99");
+            Console.WriteLine("2) Ghost of Tsushima - $899.99");
+            Console.WriteLine("3) Spider-Man: Miles Morales - $899.99");
+            Console.Write("\nElige un producto: ");
+            int opcion = int.Parse(Console.ReadLine() ?? "0");
+            return new VideoJuegos(opcion);
+        }
+
+        static ProductoBase SeleccionarProductoElectronicos()
+        {
+            Console.Clear();
+            Console.WriteLine("Electronicos\n");
+            Console.WriteLine("1) Televisor Samsung 55\" - $2500.99");
+            Console.WriteLine("2) Smartphone Xiaomi Redmi Note 10 - $9000.00");
+            Console.WriteLine("3) Auriculares Sony WH-1000XM4 - $899.99");
+            Console.Write("\nElige un producto: ");
+            int opcion = int.Parse(Console.ReadLine() ?? "0");
+            return new Electronicos(opcion);
+        }
+
+        static ProductoBase SeleccionarProductoMaterialDeLimpieza()
+        {
+            Console.Clear();
+            Console.WriteLine("Material de Limpieza\n");
+            Console.WriteLine("1) Limpiador jabon líquido Fabuloso 1L - $75.99");
+            Console.WriteLine("2) Toallitas Clorox - $139.99");
+            Console.WriteLine("3) Desodorante ambiental Febreze - $79.99");
+            Console.Write("\nElige un producto: ");
+            int opcion = int.Parse(Console.ReadLine() ?? "0");
+            return new MaterialDeLimpieza(opcion);
+        }
+
+        static ProductoBase SeleccionarProductoHogar()
+        {
+            Console.Clear();
+            Console.WriteLine("Hogar y Muebles\n");
+            Console.WriteLine("1) Sofá - $749.99");
+            Console.WriteLine("2) Cama King Size - $1569.00");
+            Console.WriteLine("3) Mesa de Comedor - $1299.00");
+            Console.Write("\nElige un producto: ");
+            int opcion = int.Parse(Console.ReadLine() ?? "0");
+            return new Hogar(opcion);
+        }
+    }
+}

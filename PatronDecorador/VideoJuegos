@@ -1,0 +1,44 @@
+//peñuelas cardenas cesar alexis 
+//22210335
+//proyecto decorador
+namespace EbayShopConsole
+{
+    public class VideoJuegos : ProductoBase
+    {
+        private readonly string _nombre;
+        private readonly string _descripcion;
+        private readonly double _precio;
+
+        public VideoJuegos(int opcion)
+        {
+            switch (opcion)
+            {
+                case 1:
+                    _nombre = "The Last of Us Part II";
+                    _descripcion = "Juego muy divertido de suspenso";
+                    _precio = 899.99;
+                    break;
+                case 2:
+                    _nombre = "Ghost of Tsushima";
+                    _descripcion = "Juego super divertido";
+                    _precio = 899.99;
+                    break;
+                case 3:
+                    _nombre = "Spider-Man: Miles Morales";
+                    _descripcion = "juego de mundo amplio y divertido";
+                    _precio = 899.99;
+                    break;
+
+                default:
+                    _nombre = "Producto desconocido (VideoJuegos)";
+                    _descripcion = "";
+                    _precio = 0;
+                    break;
+            }
+        }
+
+        public override string Nombre => _nombre;
+        public override string Descripcion => _descripcion;
+        public override double Precio => _precio;
+    }
+}

@@ -1,0 +1,25 @@
+//peñuelas cardenas cesar alexis 
+//22210335
+//proyecto decorador
+using System;
+
+namespace EbayShopConsole
+{
+    public class DescuentoDecorator : ProductoDecorator
+    {
+        private double _porcentaje;
+
+        public DescuentoDecorator(ProductoBase producto) : base(producto)
+        {
+            Random rnd = new Random();
+            _porcentaje = rnd.Next(10, 36);
+        }
+
+        public override string Nombre => _producto.Nombre;
+
+        public override string Descripcion =>
+            $"{_producto.Descripcion}\n Oferta relámpago: -{_porcentaje}% de descuento aplicado.";
+
+        public override double Precio => _producto.Precio * (1 - _porcentaje / 100);
+    }
+}

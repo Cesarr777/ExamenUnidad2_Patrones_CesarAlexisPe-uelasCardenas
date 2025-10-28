@@ -1,0 +1,43 @@
+//peñuelas cardenas cesar alexis 
+//22210335
+//proyecto decorador
+namespace EbayShopConsole
+{
+    public class Electronicos : ProductoBase
+    {
+        private readonly string _nombre;
+        private readonly string _descripcion;
+        private readonly double _precio;
+
+        public Electronicos(int opcion)
+        {
+            switch (opcion)
+            {
+                case 1:
+                    _nombre = "Televisor Samsung 55\"";
+                    _descripcion = "Resolución 4K, Smart TV.";
+                    _precio = 2500.99;
+                    break;
+                case 2:
+                    _nombre = "Smartphone Xiaomi Redmi Note 10";
+                    _descripcion = "Pantalla AMOLED 120Hz, 128GB, 8GB RAM.";
+                    _precio = 9000.00;
+                    break;
+                case 3:
+                    _nombre = "Auriculares Sony WH-1000XM4";
+                    _descripcion = "Cancelación de ruido, hasta 30h de batería.";
+                    _precio = 899.99;
+                    break;
+                default:
+                    _nombre = "Producto desconocido (Electronicos)";
+                    _descripcion = "";
+                    _precio = 0;
+                    break;
+            }
+        }
+
+        public override string Nombre => _nombre;
+        public override string Descripcion => _descripcion;
+        public override double Precio => _precio;
+    }
+}

@@ -1,0 +1,43 @@
+//peñuelas cardenas cesar alexis 
+//22210335
+//proyecto decorador
+namespace EbayShopConsole
+{
+    public class Hogar : ProductoBase
+    {
+        private readonly string _nombre;
+        private readonly string _descripcion;
+        private readonly double _precio;
+
+        public Hogar(int opcion)
+        {
+            switch (opcion)
+            {
+                case 1:
+                    _nombre = "Sofa de 3 plazas";
+                    _descripcion = "Sofa de tela gris con estructura de madera.";
+                    _precio = 749.99;
+                    break;
+                case 2:
+                    _nombre = "Cama King Size";
+                    _descripcion = "Cama ultra comoda ";
+                    _precio = 1569.00;
+                    break;
+                case 3:
+                    _nombre = "Mesa de comedor";
+                    _descripcion = "Mesa amplia y de gran calidad";
+                    _precio = 1299.00;
+                    break;
+                default:
+                    _nombre = "Producto desconocido (Hogar)";
+                    _descripcion = "";
+                    _precio = 0;
+                    break;
+            }
+        }
+
+        public override string Nombre => _nombre;
+        public override string Descripcion => _descripcion;
+        public override double Precio => _precio;
+    }
+}

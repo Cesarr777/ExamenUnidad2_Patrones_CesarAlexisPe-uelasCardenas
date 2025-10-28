@@ -1,0 +1,43 @@
+//peñuelas cardenas cesar alexis 
+//22210335
+//proyecto decorador
+namespace EbayShopConsole
+{
+    public class MaterialDeLimpieza : ProductoBase
+    {
+        private readonly string _nombre;
+        private readonly string _descripcion;
+        private readonly double _precio;
+
+        public MaterialDeLimpieza(int opcion)
+        {
+            switch (opcion)
+            {
+                case 1:
+                    _nombre = "Limpiador jabon líquido Fabuloso 1L";
+                    _descripcion = "Aroma chocolate, limpieza profunda.";
+                    _precio = 75.99;
+                    break;
+                case 2:
+                    _nombre = "Toallitas Clorox";
+                    _descripcion = "Elimina 99.9% de bacterias.";
+                    _precio = 139.99;
+                    break;
+                case 3:
+                    _nombre = "Desodorante ambiental Febreze";
+                    _descripcion = "Rendimiento premium, aroma fresco.";
+                    _precio = 79.50;
+                    break;
+                default:
+                    _nombre = "Producto desconocido (Material de Limpieza)";
+                    _descripcion = "";
+                    _precio = 0;
+                    break;
+            }
+        }
+
+        public override string Nombre => _nombre;
+        public override string Descripcion => _descripcion;
+        public override double Precio => _precio;
+    }
+}

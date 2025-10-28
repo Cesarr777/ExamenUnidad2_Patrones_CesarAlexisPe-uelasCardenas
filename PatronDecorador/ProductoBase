@@ -1,0 +1,15 @@
+//peñuelas cardenas cesar alexis 
+//22210335
+//proyecto decorador
+namespace EbayShopConsole
+{
+    /// <summary>
+    /// Clase base que define un producto genérico en Ebay.
+    /// </summary>
+    public abstract class ProductoBase
+    {
+        public abstract string Nombre { get; }
+        public abstract string Descripcion { get; }
+        public abstract double Precio { get; }
+    }
+}

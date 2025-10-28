@@ -1,0 +1,24 @@
+//peñuelas cardenas cesar alexis 
+//22210335
+//proyecto decorador
+namespace EbayShopConsole
+{
+
+    public class EnvioDecorator : ProductoDecorator
+    {
+        private double _costoEnvio;
+
+        public EnvioDecorator(ProductoBase producto, double costoEnvio = 149.99)
+            : base(producto)
+        {
+            _costoEnvio = costoEnvio;
+        }
+
+        public override string Nombre => _producto.Nombre;
+
+        public override string Descripcion =>
+            $"{_producto.Descripcion}\nEnvío estándar: ${_costoEnvio:F2}";
+
+        public override double Precio => _producto.Precio + _costoEnvio;
+    }
+}
